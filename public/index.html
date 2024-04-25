@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        color: rgb(0, 0, 0);
+        background-color: black; /* Agrega esta línea */
+      }
+    </style>
+  </head>
+  <body class="bg-black-900">
+    <div class="container mx-auto mt-4">
+      <div
+        class="mx-auto mt-4 shadow-lg mb-2 bg-black-900 shadow-lg border rounded-lg lg:w-2/6 md:w-3/6 sm:w-4/6"
+      >
+        <div class="">
+          <div class="p-5 text-white text-center text-3xl bg-black-900">
+            <span class="text-wite-500">Calcu</span>ladora
+          </div>
+          <div
+            id="display"
+            class="pt-16 p-5 pb-0 text-white text-right text-3xl bg-black-800"
+          >
+            0
+          </div>
+          <div
+            class="p-5 text-white text-right text-3xl bg-black-800"
+            id="result"
+          >
+            = <span class="text-orange-500">0</span>
+          </div>
+
+          <div class="flex items-stretch bg-black-500 h-24">
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="clearDisplay()"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                C
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('(')"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                (
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay(')')"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                )
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('/')"
+                class="rounded-full h-20 w-20 flex items-center bg-orange-500 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                ÷
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-stretch bg-black-900 h-24">
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('7')"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                7
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('8')"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                8
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('9')"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                9
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('*')"
+                class="rounded-full h-20 w-20 flex items-center bg-orange-500 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                ×
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-stretch bg-white-900 h-24">
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('4')"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                4
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('5')"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                5
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('6')"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                6
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('-')"
+                class="rounded-full h-20 w-20 flex items-center bg-orange-500 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                -
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-stretch bg-white-900 h-24">
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('1')"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                1
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('2')"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                2
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('3')"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                3
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('+')"
+                class="rounded-full h-20 w-20 flex items-center bg-orange-500 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                +
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-stretch bg-white-900 h-24 mb-4">
+            <div
+            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+          >
+            <div
+              onclick="calculatePercentage()"
+              class="rounded-full h-20 w-20 flex items-center bg-orange-500 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+            >
+              %
+            </div>
+          </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('0')"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                0
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="appendToDisplay('.')"
+                class="rounded-full h-20 w-20 flex items-center bg-black-800 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                .
+              </div>
+            </div>
+
+            <div
+              class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            >
+              <div
+                onclick="calculate()"
+                class="rounded-full h-20 w-20 flex items-center bg-orange-500 justify-center shadow-lg border-2 border-black hover:border-2 hover:border-black-500 focus:outline-none"
+              >
+                =
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
